@@ -20,17 +20,21 @@ def get_body(file)
   text_dirty.split.join(' ')
 end
 
-results = "[\n"
+def format_out(results)
+  json = results.to_json
+  out = JSON.parse(json)
+  JSON.pretty_generate(out)
+end
+
+results = []
 file_list(folder).each do |file|
   file_data = {}
   file_data['id'] = file
   file_data['title'] = get_title(file)
   file_data['body'] = get_body(file)
-  results << JSON.pretty_generate(file_data) + ", \n"
+  results << file_data
 end
-results = results.chomp.chop.chop
-results << ']'
 
 output = File.open('result.json', 'w')
-output << results
+output << format_out(results)
 output.close
