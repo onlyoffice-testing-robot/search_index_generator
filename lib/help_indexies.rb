@@ -1,7 +1,8 @@
 require 'json'
 require 'nokogiri'
 
-folder = ARGV[1] || '/home/lobashov/sources/web-apps-pro/apps/documenteditor/main/resources/help/ru'
+folder = ARGV[0]
+output = ARGV[1] || 'result.json'
 
 def file_list(folder)
   Dir["#{folder}/**/*.htm*"].sort
@@ -35,6 +36,6 @@ file_list(folder).each do |file|
   results << file_data
 end
 
-output = File.open('result.json', 'w')
+output = File.open(output, 'w')
 output << format_out(results)
 output.close
