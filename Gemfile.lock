@@ -4,7 +4,7 @@ GEM
     ast (2.3.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    ffi (1.9.18)
+    ffi (1.11.1)
     iniparse (1.4.4)
     mini_portile2 (2.3.0)
     nokogiri (1.8.1)
