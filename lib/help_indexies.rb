@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'nokogiri'
 
@@ -17,7 +19,7 @@ def get_body(file)
   data = Nokogiri::HTML(File.read(file))
   body = data.xpath('//body')
   body.search('h1').remove
-  text_dirty = body.to_s.gsub(/<\/?[^>]*>/, '')
+  text_dirty = body.to_s.gsub(%r{</?[^>]*>}, '')
   text_dirty.split.join(' ')
 end
 
